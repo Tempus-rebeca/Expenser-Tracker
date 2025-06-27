@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
             $table->string('description');
             $table->integer('category_id');
             $table->decimal('amount', 10, 2);
@@ -22,7 +21,7 @@ return new class extends Migration
 
         });
         Schema::table('expenses', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
 
     }

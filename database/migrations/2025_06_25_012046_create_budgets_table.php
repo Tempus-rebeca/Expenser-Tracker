@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->integer('month'); // 1 a 12
+            $table->integer('year'); // 2024, 2025, etc.
             $table->decimal('amount', 10, 2);
+            $table->integer('category_id');
             $table->timestamps();
+        });
+        Schema::table('budgets', function (Blueprint $table) {
+            $table->foreign('category_id')->references('id')->on('categories');
         });
 
     }
