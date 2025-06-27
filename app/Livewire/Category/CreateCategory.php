@@ -11,7 +11,7 @@ class CreateCategory extends Component
 
     public function save()
     {
-        // $this->validate();
+        $this->validate();
 
         // $this->color = '#' . ltrim($this->color, '#');
 
