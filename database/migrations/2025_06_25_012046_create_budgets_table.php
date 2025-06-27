@@ -19,6 +19,8 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->integer('category_id');
             $table->timestamps();
+
+            $table->unique(['month', 'year', 'category_id']);
         });
         Schema::table('budgets', function (Blueprint $table) {
             $table->foreign('category_id')->references('id')->on('categories');
